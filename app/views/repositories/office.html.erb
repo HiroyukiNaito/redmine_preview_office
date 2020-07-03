@@ -1,0 +1,12 @@
+<%= render :layout => 'layouts/file' do %>
+  <script type="text/javascript">  
+    function resizeIframe(obj) {
+      $(obj).height($(obj).contents().outerHeight());
+    }
+
+    function resizeObject(obj) {
+      $(obj).height($(obj.contentWindow.document).outerHeight());
+    }
+  </script>
+  <%= preview_office_tag @attachment %>
+<% end %>
