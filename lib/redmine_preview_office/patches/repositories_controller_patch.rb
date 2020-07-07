@@ -43,6 +43,11 @@ module RedminePreviewOffice
               head 404
             end # if
           end # def
+
+          def find_attachment
+                @attachment = @repository.cat(@path, @rev)
+                @project = @repository.project
+          end # def
         end # base
       end # self
 

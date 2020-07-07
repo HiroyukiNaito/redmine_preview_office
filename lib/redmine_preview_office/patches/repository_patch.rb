@@ -63,8 +63,8 @@ module RedminePreviewOffice
   end  
 end
 
-unless Attachment.included_modules.include?(RedminePreviewOffice::Patches::RepositoryPatch)
-    Attachment.send(:include, RedminePreviewOffice::Patches::RepositoryPatch)
+unless Repository.included_modules.include?(RedminePreviewOffice::Patches::RepositoryPatch)
+    Repository.send(:include, RedminePreviewOffice::Patches::RepositoryPatch)
 end
 
 
