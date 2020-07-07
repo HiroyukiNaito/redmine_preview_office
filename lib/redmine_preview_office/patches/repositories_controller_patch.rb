@@ -27,11 +27,11 @@ module RedminePreviewOffice
         base.send(:prepend, InstancOverwriteMethods)
         base.class_eval do
           unloadable
-          alias_method           :find_attachment_for_preview_office, :find_attachment
+          alias_method           :find_attachment_for_preview_office, :entry_and_raw
           before_action          :find_attachment_for_preview_office, only: [:preview_office]
 
           def preview_office
-            if @attachment.is_office_doc? && preview = @attachment.preview_office(size: params[:size])
+            if @repository.is_office_doc? && preview = @repository.preview_office(size: params[:size])
               if stale?(etag: preview)
                 send_file preview,
                           filename: filename_for_content_disposition(preview),
@@ -43,11 +43,6 @@ module RedminePreviewOffice
               head 404
             end # if
           end # def
-
-          def find_attachment
-                @attachment = @repository.cat(@path, @rev)
-                @project = @repository.project
-          end # def
         end # base
       end # self
 
@@ -56,7 +51,7 @@ module RedminePreviewOffice
           rendered = false
           respond_to do |format|
             format.html do
-              if @attachment.is_office_doc?
+              if @repository.is_office_doc?
                 render action: 'office'
                 rendered = true
               end
