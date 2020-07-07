@@ -29,4 +29,7 @@ Rails.configuration.to_prepare do
   require 'redmine_preview_office/patches/admin_controller_patch'
   require 'redmine_preview_office/patches/thumbnail_patch'
 
+  require 'redmine_preview_office/patches/repositories_controller_patch'
+  require 'redmine_preview_office/patches/repository_patch'
+
 end
