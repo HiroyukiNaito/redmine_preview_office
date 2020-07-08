@@ -31,7 +31,7 @@ module RedminePreviewOffice
           before_action          :find_attachment_for_preview_office, only: [:preview_office]
 
           def preview_office
-            if @repository.is_office_doc? && preview = @repository.preview_office(size: params[:size])
+            preview = @repository.preview_office(size: params[:size])
               if stale?(etag: preview)
                 send_file preview,
                           filename: filename_for_content_disposition(preview),
@@ -41,7 +41,7 @@ module RedminePreviewOffice
             else
               # No thumbnail for the attachment or thumbnail could not be created
               head 404
-            end # if
+        #    end # if
           end # def
         end # base
       end # self
@@ -51,10 +51,10 @@ module RedminePreviewOffice
           rendered = false
           respond_to do |format|
             format.html do
-              if @repository.is_office_doc?
+#              if @repository.is_office_doc?
                 render action: 'office'
                 rendered = true
-              end
+#              end
             end
             format.any {}
           end

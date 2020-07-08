@@ -32,7 +32,7 @@ module RedminePreviewOffice
           # Returns the full path the attachment docx preview, or nil
           # if the preview cannot be generated.
           def preview_office(options={})
-            if is_office_doc? && readable?
+ #           if is_office_doc? && readable?
 
               target = File.join(self.class.thumbnails_storage_path, "#{id}_#{digest}.pdf")
 
@@ -42,12 +42,12 @@ module RedminePreviewOffice
                 logger.error "An error occured while generating preview for #{disk_filename} to #{target}\nException was: #{e.message}" if logger
                 return nil
               end
-            end
+#            end
           end #def
           
-          def is_office_doc?
-            %w(.doc .docx .xls .xlsx .ppt .pptx .rtf .odt).include?( File.extname(filename).downcase )
-          end #def
+#          def is_office_doc?
+#            %w(.doc .docx .xls .xlsx .ppt .pptx .rtf .odt).include?( File.extname(filename).downcase )
+#          end #def
 
 
         end #base
