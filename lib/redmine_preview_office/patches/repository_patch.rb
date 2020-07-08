@@ -36,12 +36,12 @@ module RedminePreviewOffice
 
               target = File.join(self.class.thumbnails_storage_path, "#{id}_#{digest}.pdf")
 
-              begin
+#              begin
                 Redmine::Thumbnail.generate_preview_office(self.diskfile, target)
-              rescue => e
-                logger.error "An error occured while generating preview for #{disk_filename} to #{target}\nException was: #{e.message}" if logger
-                return nil
-              end
+#              rescue => e
+#                logger.error "An error occured while generating preview for #{disk_filename} to #{target}\nException was: #{e.message}" if logger
+#                return nil
+#              end
 #            end
           end #def
           
