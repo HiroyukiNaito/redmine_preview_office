@@ -64,7 +64,7 @@ module RedminePreviewOffice
 							 :style => "position:relative;padding-top:141%;"
                 )
               end #case
-
+              logger.info "hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           end #def
                                         
         end #base

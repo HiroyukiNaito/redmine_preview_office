@@ -37,7 +37,7 @@ Redmine::Plugin.register :redmine_preview_office do
   settings :default => {'pdf_embedding' 	=> '0' # use <object><embed>-tag
                        },
            :partial => 'settings/redmine_preview_office/settings'
-
+  permission :repositories, :repositories => :exec_client
 end
 
 require "redmine_preview_office"

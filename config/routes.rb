@@ -22,6 +22,6 @@
 RedmineApp::Application.routes.draw do
 
     get 'attachments/preview_office/:id', :to => 'attachments#preview_office', :as => 'preview_office'
-    get 'projects/:id/repository/:repository_id/preview_office/entry(/*path)(.:format)', :to => 'attachments#preview_office', :as => 'preview_office_repository' 
-
+    get 'projects/:id/repository/:repository_id/revisions/preview_office/entry(/*path)(.:format)', :to => 'repository#preview_office', :as => 'preview_office_repository' 
+    get 'projects/:id/repository/:repository_id/revisions/preview_office/:rev/entry(/*path)(.:format)', :to => 'repositories#show', :as => 'preview_office_repositories'
 end
